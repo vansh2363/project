@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Navigation Menu</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 200vh;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #f0f0f0, #d9e4f5);
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(45deg, #ff6b6b, #6b6bff, #6bffb3);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: background 0.5s ease-in-out, padding 0.3s;
+            z-index: 1000;
+            background-size: 200% 200%;
+            animation: gradientBG 5s infinite alternate;
+        }
+        @keyframes gradientBG {
+            0% { background-position: left; }
+            100% { background-position: right; }
+        }
+        .navbar.scrolled {
+            background: linear-gradient(45deg, #ff3b3b, #3b3bff, #3bff93);
+            padding: 10px 20px;
+            transition: background 0.5s ease-in-out;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            font-size: 18px;
+            font-weight: bold;
+            transition: color 0.3s, transform 0.3s, background 0.3s;
+            border-radius: 5px;
+        }
+        .navbar a:hover {
+            color: yellow;
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+        .navbar a:active {
+            transform: scale(0.95);
+        }
+        .logo {
+            position: absolute;
+            left: 20px;
+            font-size: 22px;
+            font-weight: bold;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="logo">MyBrand</div>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+    </nav>
+    
+    <script>
+        window.addEventListener('scroll', function() {
+            let navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
